@@ -12,9 +12,8 @@
 }
 
 .post{
-    padding: 1rem;
+    padding-left: 1rem;
     display: flex;
-    flex-direction: row !important;
     align-items: center;
 }
 

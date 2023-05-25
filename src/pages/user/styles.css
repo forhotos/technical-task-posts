@@ -1,4 +1,9 @@
-.user{
+.user {
+    display: flex;
+    padding: 1rem;
+}
+
+.user-inner{
     display: flex;
     flex-direction: column;
     gap: 1rem;
