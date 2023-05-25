@@ -1,10 +1,10 @@
-const initialState = {
+const initialUsersState = {
     userInfo: null,
     userLoading: false,
     error: null
 }
 
-export default function usersReducer(state = initialState, action) {
+export default function usersReducer(state = initialUsersState, action) {
     switch (action.type) {
         case 'GET_USER_REQUEST':
             return {
@@ -12,12 +12,10 @@ export default function usersReducer(state = initialState, action) {
                 userLoading: true
             }
         case 'GET_USER_SUCCESS': {
-            const {userInfo, userPosts} = action.payload;
             return {
                 ...state,
                 userLoading: false,
-                userInfo,
-                userPosts
+                userInfo: action.payload,
             }
         }
         case 'GET_USER_FAILURE':

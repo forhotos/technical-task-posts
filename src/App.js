@@ -4,16 +4,16 @@ import {
     Route,
     Routes
 } from "react-router-dom";
-import { HomePage } from "./pages";
+import { HomePage, UserPage } from "./pages";
 
 function App() {
     return (
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path="about" />
-                    <Route path="user"  />
-                    <Route exact path="/" element={<HomePage />}/>
+                    <Route path="/about"/>
+                    <Route path="/user/:id" element={ <UserPage/> }/>
+                    <Route exact path="/" element={ <HomePage/> }/>
                 </Routes>
 
             </BrowserRouter>

@@ -1,11 +1,11 @@
-const initialState = {
+const initialPostsState = {
     posts: [],
     postsLoading: false,
     commentsLoading: false,
     error: null
 }
 
-export default function postsReducer (state = initialState, action) {
+export default function postsReducer (state = initialPostsState, action) {
     switch (action.type) {
         case 'GET_POSTS_BY_USER_REQUEST':
         case 'GET_ALL_POSTS_REQUEST':

@@ -7,9 +7,9 @@ export const getUser = (userId) => ({
     payload: userId
 });
 
-export const getUserSuccess = (userInfo, userPosts) => ({
+export const getUserSuccess = (userInfo) => ({
     type: 'GET_USER_SUCCESS',
-    payload: { userInfo, userPosts }
+    payload: userInfo
 });
 
 export const geUserFailure = (error) => ({
