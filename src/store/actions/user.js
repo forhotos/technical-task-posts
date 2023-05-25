@@ -1,22 +1,3 @@
-export const getPostsByUserRequest = () => ({
-    type: 'GET_ALL_POSTS_REQUEST',
-});
-
-export const getPostsByUser = (userId) => ({
-    type: 'GET_POSTS_BY_USER',
-    payload: userId
-});
-
-export const getPostsByUserSuccess = (posts) => ({
-    type: 'GET_POSTS_BY_USER',
-    payload: posts
-});
-
-export const getPostsByUserFailure = (error) => ({
-    type: 'GET_POSTS_BY_USER',
-    payload: error
-});
-
 export const getUserRequest = () => ({
     type: 'GET_USER_REQUEST',
 });
@@ -26,9 +7,9 @@ export const getUser = (userId) => ({
     payload: userId
 });
 
-export const getUserSuccess = (user) => ({
+export const getUserSuccess = (userInfo, userPosts) => ({
     type: 'GET_USER_SUCCESS',
-    payload: user
+    payload: { userInfo, userPosts }
 });
 
 export const geUserFailure = (error) => ({

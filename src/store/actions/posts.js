@@ -25,9 +25,9 @@ export const geCommentsByPost = (postId) => ({
     payload: postId
 });
 
-export const geCommentsByPostSuccess = (comments) => ({
+export const geCommentsByPostSuccess = (postId, comments) => ({
     type: 'GET_COMMENTS_BY_POST_SUCCESS',
-    payload: comments
+    payload: { postId, comments }
 });
 
 export const geCommentsByPostFailure = (error) => ({
