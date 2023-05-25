@@ -9,10 +9,11 @@ export const getAllPosts = () => ({
 export const getAllPostsSuccess = (posts) => ({
     type: 'GET_ALL_POSTS_SUCCESS',
     payload: posts
+
 });
 
 export const getAllPostsFailure = (error) => ({
-    type: 'GET_ALL_POSTS_REQUESTED',
+    type: 'GET_ALL_POSTS_FAILURE',
     payload: error
 });
 

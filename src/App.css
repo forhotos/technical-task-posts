@@ -1,0 +1,9 @@
+.App{
+    padding: 60px 80px;
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
