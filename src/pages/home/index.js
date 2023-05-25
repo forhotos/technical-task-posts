@@ -16,13 +16,12 @@ function HomePage() {
         dispatch(getAllPosts());
     }, []);
 
-    console.log('posts from page', postsState);
-
     return (
         <div>
-            <span>Hello</span>
             <PostCardList
-                posts={ posts }
+                posts={posts}
+                commentsLoading={commentsLoading}
+                postsLoading={postsLoading}
             />
 
         </div>

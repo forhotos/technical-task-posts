@@ -1,6 +1,5 @@
 const initialState = {
     userInfo: null,
-    userPosts: [],
     userLoading: false,
     error: null
 }

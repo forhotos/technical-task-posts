@@ -1,9 +1,9 @@
 import axios from "axios";
-import { all, takeLatest, put, call, takeEvery } from "redux-saga/effects";
+import { all, takeLatest, put, call } from "redux-saga/effects";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-function* fetchAllPostsSaga(action) {
+function* fetchAllPostsSaga() {
     try {
         yield put({type: 'GET_ALL_POSTS_REQUEST'});
         const response = yield call(() =>
@@ -11,15 +11,33 @@ function* fetchAllPostsSaga(action) {
                 .get(`${ apiUrl }/posts`)
                 .then(res => new Promise(resolve => setTimeout(() => resolve(res), 500)))
         );
-        yield put({type: 'GET_ALL_POSTS_SUCCESS', payload: response.data});
+        yield put({type: 'GET_ALL_POSTS_SUCCESS', payload: response.data });
 
     } catch (e) {
         yield put({type: 'GET_ALL_POSTS_FAILURE', error: e.message});
     }
 }
 
+function* fetchCommentsByPostSaga(action) {
+    try {
+        const postId = action.payload;
+        yield put({type: 'GET_COMMENTS_BY_POST_REQUEST'});
+        const response = yield call(() =>
+            axios
+                .get(`${ apiUrl }/comments?postId=${postId}`)
+                .then(res => new Promise(resolve => setTimeout(() => resolve(res), 500)))
+        );
+        console.log(response.data);
+        yield put({type: 'GET_COMMENTS_BY_POST_SUCCESS', payload: { postId, comments: response.data }});
+
+    } catch (e) {
+        yield put({type: 'GET_COMMENTS_BY_POST_FAILURE', error: e.message});
+    }
+}
+
 export default function* rootSaga() {
     yield all([
         takeLatest('GET_ALL_POSTS', fetchAllPostsSaga),
+        takeLatest('GET_COMMENTS_BY_POST', fetchCommentsByPostSaga),
     ])
 };

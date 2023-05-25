@@ -7,11 +7,13 @@ const initialState = {
 
 export default function postsReducer (state = initialState, action) {
     switch (action.type) {
+        case 'GET_POSTS_BY_USER_REQUEST':
         case 'GET_ALL_POSTS_REQUEST':
             return {
                 ...state,
                 postsLoading: true
             }
+        case 'GET_POSTS_BY_USER_SUCCESS':
         case 'GET_ALL_POSTS_SUCCESS': {
             const newPosts = action.payload;
             console.log(action.payload);
@@ -23,6 +25,7 @@ export default function postsReducer (state = initialState, action) {
                 })
             }
         }
+        case 'GET_POSTS_BY_USER_FAILURE':
         case 'GET_ALL_POSTS_FAILURE':
             return {
                 ...state,

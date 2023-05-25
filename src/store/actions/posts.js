@@ -36,3 +36,23 @@ export const geCommentsByPostFailure = (error) => ({
     payload: error
 });
 
+export const getPostsByUserRequest = () => ({
+    type: 'GET_POSTS_BY_USER_REQUEST',
+});
+
+export const getPostsByUser = (userId) => ({
+    type: 'GET_POSTS_BY_USER',
+    payload: userId
+});
+
+export const getPostsByUserSuccess = (posts) => ({
+    type: 'GET_POSTS_BY_USER_SUCCESS',
+    payload: posts
+
+});
+
+export const getPostsByUserFailure = (error) => ({
+    type: 'GET_POSTS_BY_USER_FAILURE',
+    payload: error
+});
+
