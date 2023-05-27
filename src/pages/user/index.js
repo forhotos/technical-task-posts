@@ -31,10 +31,10 @@ function UserPage() {
     useEffect(() => {
         dispatch(getUser(userId));
         dispatch(getPostsByUser(userId));
-    }, []);
+    }, [dispatch, userId]);
 
     return (
-        <div>
+        <div className="p-5">
             <Link to={ '/' }>
                 <Button
                     variant={ "primary" }

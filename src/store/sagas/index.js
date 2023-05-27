@@ -3,7 +3,7 @@ import { all, takeLatest, put, call } from "redux-saga/effects";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-function* fetchAllPostsSaga() {
+function* fetchAllPostsSaga(action) {
     try {
         yield put({type: 'GET_ALL_POSTS_REQUEST'});
         const response = yield call(() =>
@@ -11,8 +11,15 @@ function* fetchAllPostsSaga() {
                 .get(`${ apiUrl }/posts`)
                 .then(res => new Promise(resolve => setTimeout(() => resolve(res), 500)))
         );
-        yield put({type: 'GET_ALL_POSTS_SUCCESS', payload: response.data });
 
+        const query = action.payload;
+        const filteredPosts = query
+            ? response.data.filter(post => post.title.includes(query))
+            : response.data;
+        yield put({
+            type: 'GET_ALL_POSTS_SUCCESS',
+            payload: filteredPosts
+        });
     } catch (e) {
         yield put({type: 'GET_ALL_POSTS_FAILURE', error: e.message});
     }
@@ -24,11 +31,10 @@ function* fetchCommentsByPostSaga(action) {
         yield put({type: 'GET_COMMENTS_BY_POST_REQUEST'});
         const response = yield call(() =>
             axios
-                .get(`${ apiUrl }/comments?postId=${postId}`)
+                .get(`${ apiUrl }/comments?postId=${ postId }`)
                 .then(res => new Promise(resolve => setTimeout(() => resolve(res), 500)))
         );
-        console.log(response.data);
-        yield put({type: 'GET_COMMENTS_BY_POST_SUCCESS', payload: { postId, comments: response.data }});
+        yield put({type: 'GET_COMMENTS_BY_POST_SUCCESS', payload: {postId, comments: response.data}});
 
     } catch (e) {
         yield put({type: 'GET_COMMENTS_BY_POST_FAILURE', error: e.message});
@@ -41,11 +47,10 @@ function* fetchUser(action) {
         yield put({type: 'GET_USER_REQUEST'});
         const response = yield call(() =>
             axios
-                .get(`${ apiUrl }/users/${userId}`)
+                .get(`${ apiUrl }/users/${ userId }`)
                 .then(res => new Promise(resolve => setTimeout(() => resolve(res), 500)))
         );
-        console.log(response.data);
-        yield put({type: 'GET_USER_SUCCESS', payload: response.data });
+        yield put({type: 'GET_USER_SUCCESS', payload: response.data});
 
     } catch (e) {
         yield put({type: 'GET_USER_FAILURE', error: e.message});
@@ -58,10 +63,10 @@ function* fetchPostsByUserSaga(action) {
         yield put({type: 'GET_POSTS_BY_USER_REQUEST'});
         const response = yield call(() =>
             axios
-                .get(`${ apiUrl }/posts?userId=${userId}`)
+                .get(`${ apiUrl }/posts?userId=${ userId }`)
                 .then(res => new Promise(resolve => setTimeout(() => resolve(res), 500)))
         );
-        yield put({type: 'GET_POSTS_BY_USER_SUCCESS', payload: response.data });
+        yield put({type: 'GET_POSTS_BY_USER_SUCCESS', payload: response.data});
 
     } catch (e) {
         yield put({type: 'GET_POSTS_BY_USER_FAILURE', error: e.message});

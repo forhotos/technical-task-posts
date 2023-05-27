@@ -4,17 +4,15 @@ import {
     Route,
     Routes
 } from "react-router-dom";
-import { HomePage, UserPage } from "./pages";
-import Header from "./components/layout/Header";
+import { AboutPage, HomePage, UserPage } from "./pages";
 
 function App() {
     return (
         <div className="App">
             <BrowserRouter>
-                <Header/>
                 <div className='body'>
                     <Routes>
-                        <Route path="/about"/>
+                        <Route path="/about" element={ <AboutPage/> }/>
                         <Route path="/user/:id" element={ <UserPage/> }/>
                         <Route exact path="/" element={ <HomePage/> }/>
                     </Routes>

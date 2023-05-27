@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Offcanvas } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import './styles.css';
 
 function Header() {
     const [ show, setShow ] = useState(false);

@@ -1,0 +1,18 @@
+
+.header{
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: #222355;
+    backdrop-filter: blur(8px);
+    z-index: 1;
+}
+
+.header-links{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    font-size: 1.5rem;
+}

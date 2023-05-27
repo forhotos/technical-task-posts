@@ -67,16 +67,6 @@ export default function postsReducer (state = initialPostsState, action) {
             }
         }
 
-        case 'SEARCH_POSTS': {
-            const query = action.payload;
-            let searchResult = [...state.posts].filter(post => post.title.toLowerCase().includes(query.toLowerCase()));
-
-            return {
-                ...state,
-                posts: searchResult
-            }
-        }
-
         default:
             return state;
     }

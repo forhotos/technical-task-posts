@@ -2,8 +2,9 @@ export const getAllPostsRequest = () => ({
     type: 'GET_ALL_POSTS_REQUEST',
 });
 
-export const getAllPosts = () => ({
+export const getAllPosts = (query) => ({
     type: 'GET_ALL_POSTS',
+    payload: query
 });
 
 export const getAllPostsSuccess = (posts) => ({
@@ -60,9 +61,3 @@ export const sortPosts = (type) => ({
     type: 'SORT_POSTS',
     payload: type
 });
-
-export const searchPosts = (query) => ({
-    type: 'SEARCH_POSTS',
-    payload: query
-});
-
