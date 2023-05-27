@@ -59,5 +59,10 @@ export const getPostsByUserFailure = (error) => ({
 export const sortPosts = (type) => ({
     type: 'SORT_POSTS',
     payload: type
-})
+});
+
+export const searchPosts = (query) => ({
+    type: 'SEARCH_POSTS',
+    payload: query
+});
 

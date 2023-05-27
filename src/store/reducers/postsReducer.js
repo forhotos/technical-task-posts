@@ -56,6 +56,7 @@ export default function postsReducer (state = initialPostsState, action) {
                 commentsLoading: false,
                 error: action.payload
             }
+
         case 'SORT_POSTS': {
             let sortedPosts = [...state.posts].sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
             sortedPosts = action.payload === 'DESC' ? sortedPosts.reverse() : sortedPosts;
@@ -63,6 +64,16 @@ export default function postsReducer (state = initialPostsState, action) {
             return {
                 ...state,
                 posts: sortedPosts
+            }
+        }
+
+        case 'SEARCH_POSTS': {
+            const query = action.payload;
+            let searchResult = [...state.posts].filter(post => post.title.toLowerCase().includes(query.toLowerCase()));
+
+            return {
+                ...state,
+                posts: searchResult
             }
         }
 
