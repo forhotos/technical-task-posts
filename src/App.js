@@ -5,6 +5,7 @@ import {
     Routes
 } from "react-router-dom";
 import { AboutPage, HomePage, UserPage } from "./pages";
+import ToastHelper from "./components/toast";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     </Routes>
                 </div>
             </BrowserRouter>
+            <ToastHelper />
         </div>
     );
 }

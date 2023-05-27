@@ -21,7 +21,8 @@ function* fetchAllPostsSaga(action) {
             payload: filteredPosts
         });
     } catch (e) {
-        yield put({type: 'GET_ALL_POSTS_FAILURE', error: e.message});
+        yield put({type: 'GET_ALL_POSTS_FAILURE', payload: e.response.data});
+        yield put({type: 'SHOW_TOAST', payload: e?.response?.data?.error?.message || e.response.status});
     }
 }
 
@@ -37,7 +38,8 @@ function* fetchCommentsByPostSaga(action) {
         yield put({type: 'GET_COMMENTS_BY_POST_SUCCESS', payload: {postId, comments: response.data}});
 
     } catch (e) {
-        yield put({type: 'GET_COMMENTS_BY_POST_FAILURE', error: e.message});
+        yield put({type: 'GET_COMMENTS_BY_POST_FAILURE', payload: e.response.data});
+        yield put({type: 'SHOW_TOAST', payload: e?.response?.data?.error?.message || e.response.status});
     }
 }
 
@@ -53,7 +55,8 @@ function* fetchUser(action) {
         yield put({type: 'GET_USER_SUCCESS', payload: response.data});
 
     } catch (e) {
-        yield put({type: 'GET_USER_FAILURE', error: e.message});
+        yield put({type: 'GET_USER_FAILURE', payload: e.response.data});
+        yield put({type: 'SHOW_TOAST', payload: e?.response?.data?.error?.message || e.response.status});
     }
 }
 
@@ -69,7 +72,8 @@ function* fetchPostsByUserSaga(action) {
         yield put({type: 'GET_POSTS_BY_USER_SUCCESS', payload: response.data});
 
     } catch (e) {
-        yield put({type: 'GET_POSTS_BY_USER_FAILURE', error: e.message});
+        yield put({type: 'GET_POSTS_BY_USER_FAILURE', payload: e.response.data});
+        yield put({type: 'SHOW_TOAST', payload: e?.response?.data?.error?.message || e.response.status});
     }
 }
 

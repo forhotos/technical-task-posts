@@ -17,7 +17,7 @@ function Header() {
         <div className='header'>
             <Button
                 variant="link"
-                onClick={toggleShow}
+                onClick={ toggleShow }
             >
                 <img
                     src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Hamburger_icon_white.svg/1024px-Hamburger_icon_white.svg.png'
@@ -28,18 +28,38 @@ function Header() {
 
             <Offcanvas
                 show={ show }
-                onHide={handleClose}
+                onHide={ handleClose }
                 placement={ "start" }
             >
                 <Offcanvas.Body>
-                    <div className='header-links'>
-                        <Link to='/' onClick={handleLinkClick}>
-                            <span>Список постов</span>
-                        </Link>
-                        <Link to='/about' onClick={handleLinkClick}>
-                            <span>Обо мне</span>
-                        </Link>
+                    <div className='header-inner'>
+                        <div className='header-links'>
+                            <Link to='/' onClick={ handleLinkClick }>
+                                <span>Список постов</span>
+                            </Link>
+                            <Link to='/about' onClick={ handleLinkClick }>
+                                <span>Обо мне</span>
+                            </Link>
+                        </div>
+                        <div className='header-info'>
+                            <img
+                                src={'https://img.hhcdn.ru/photo/620167004.jpeg?t=1685302444&h=0HDMmARpg_RqAQsR6SGK3w'}
+                                alt='my-img'
+                                height={100}
+                            />
+                            <div className='header-info-data'>
+                                <div>
+                                    <strong>Имя: </strong><span>Алексей</span>
+                                </div>
+                                <div>
+                                    <strong>E-mail: </strong><span>forhotos@gmail.com</span>
+                                </div>
+
+                            </div>
+
+                        </div>
                     </div>
+
                 </Offcanvas.Body>
 
 
