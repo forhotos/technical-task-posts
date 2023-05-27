@@ -56,3 +56,8 @@ export const getPostsByUserFailure = (error) => ({
     payload: error
 });
 
+export const sortPosts = (type) => ({
+    type: 'SORT_POSTS',
+    payload: type
+})
+

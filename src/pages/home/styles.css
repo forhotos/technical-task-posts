@@ -1,0 +1,14 @@
+.filter{
+    margin-bottom: 4rem;
+    justify-content: space-between;
+}
+
+.filter-item{
+    display: flex;
+    gap: 1rem;
+    height: 38px;
+}
+
+.filter-item-label{
+    color: #fff
+}

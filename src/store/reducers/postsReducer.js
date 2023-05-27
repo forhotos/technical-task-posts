@@ -16,7 +16,6 @@ export default function postsReducer (state = initialPostsState, action) {
         case 'GET_POSTS_BY_USER_SUCCESS':
         case 'GET_ALL_POSTS_SUCCESS': {
             const newPosts = action.payload;
-            console.log(action.payload);
             return {
                 ...state,
                 postsLoading: false,
@@ -57,6 +56,15 @@ export default function postsReducer (state = initialPostsState, action) {
                 commentsLoading: false,
                 error: action.payload
             }
+        case 'SORT_POSTS': {
+            let sortedPosts = [...state.posts].sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+            sortedPosts = action.payload === 'DESC' ? sortedPosts.reverse() : sortedPosts;
+
+            return {
+                ...state,
+                posts: sortedPosts
+            }
+        }
 
         default:
             return state;

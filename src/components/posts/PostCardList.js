@@ -53,6 +53,7 @@ function PostCardList(props) {
                                         return (
                                             <Card
                                                 bg="light"
+                                                key={`post-${post.id}`}
                                             >
                                                 <div className="post">
                                                     <Link to={ `/user/${ post.userId }` }>
