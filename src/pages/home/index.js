@@ -14,55 +14,53 @@ function HomePage() {
         posts
     } = postsState;
 
-    const [sortValue, setSortValue] = useState('');
-    const [searchQuery, setSearchQuery] = useState('');
+    const [ sortValue, setSortValue ] = useState('');
 
     useEffect(() => {
-        if (sortValue){
+        if (sortValue) {
             dispatch(sortPosts(sortValue));
         }
-    }, [sortValue])
+    }, [ sortValue ])
 
     useEffect(() => {
-        if (searchQuery === ''){
-            dispatch(getAllPosts());
-            setSortValue('');
-        }
-    }, [searchQuery])
+        dispatch(getAllPosts());
+    }, [])
 
     return (
         <div>
-            <Row className="filter">
-                <Col>
+            <Form
+                className='filter container'
+                onSubmit={ (e) => {
+                    e.preventDefault();
+
+                    const query = e.target.query.value;
+                    dispatch(query === '' ? getAllPosts() : searchPosts(query));
+                    setSortValue('');
+                } }
+            >
+                <Form.Group controlId="query" as={ Col } className='filter-item'>
                     <InputGroup className="mb-3">
-                        <InputGroup.Text id="inputGroup-sizing-sm">🔎</InputGroup.Text>
+                        <InputGroup.Text>🔎</InputGroup.Text>
                         <Form.Control
                             placeholder="Поиск..."
                             type="search"
-
-                            onChange={(e) => {
-                                setSearchQuery(e.target.value);
-                            }}
                         />
                         <Button
                             variant="primary"
-                            disabled={searchQuery === ''}
-                            onClick={() => {
-                                dispatch(searchPosts(searchQuery));
-                                setSortValue('');
-                            }}
+                            type="submit"
                         >
                             Найти
                         </Button>
                     </InputGroup>
-                </Col>
-                <Col>
+                </Form.Group>
+                <Form.Group as={ Col } className='filter-item'>
                     <Form.Select
                         onChange={ (e) => {
                             const sortType = e.target.value;
                             setSortValue(sortType);
-                        }}
-                        value={sortValue}
+                        } }
+                        value={ sortValue }
+                        as={ Col }
                     >
                         <option
                             value=''
@@ -81,8 +79,8 @@ function HomePage() {
                             Заголовок: убывание
                         </option>
                     </Form.Select>
-                </Col>
-            </Row>
+                </Form.Group>
+            </Form>
             <PostCardList
                 posts={ posts }
                 commentsLoading={ commentsLoading }
