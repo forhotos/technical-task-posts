@@ -1,7 +1,8 @@
-import { sortPosts } from "../../store/actions/posts";
+import { sortPosts } from "../../../store/actions/posts";
 import { Button, Col, Form, InputGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import './styles.css';
 
 function PostsFilter(props) {
     const dispatch = useDispatch();
@@ -28,8 +29,8 @@ function PostsFilter(props) {
                 setSortValue('');
             } }
         >
-            <fieldset className='filter' disabled={ loading }>
-                <Form.Group controlId="query" className='filter-item' style={ {flex: 1, maxWidth: '40%'} }>
+            <fieldset className='filter mb-5' disabled={ loading }>
+                <Form.Group controlId="query" className='filter-item-search'>
                     <InputGroup className="mb-3">
                         <InputGroup.Text>🔎</InputGroup.Text>
                         <Form.Control
@@ -44,7 +45,7 @@ function PostsFilter(props) {
                         </Button>
                     </InputGroup>
                 </Form.Group>
-                <Form.Group className='filter-item'>
+                <Form.Group className='filter-item-sort'>
                     <Form.Select
                         onChange={ (e) => {
                             const sortType = e.target.value;

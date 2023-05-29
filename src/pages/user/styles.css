@@ -1,6 +1,6 @@
 .user {
     display: flex;
-    padding: 1rem;
+    align-items: center;
 }
 
 .user-inner{
@@ -22,4 +22,19 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+.card-img{
+    max-width: 160px;
+}
+
+@media (max-width: 767px){
+
+    .card-img{
+        max-height: 140px;
+    }
+
+    .user-inner{
+        margin-left: 0.5rem;
+    }
 }

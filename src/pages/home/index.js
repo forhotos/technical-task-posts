@@ -1,10 +1,10 @@
-import PostCardList from "../../components/posts/PostCardList";
+import PostCardList from "../../components/posts/post-card-list";
 import { useDispatch, useSelector } from "react-redux";
-import PostsFilter from "../../components/posts/PostsFilter";
-import Header from "../../components/layout/Header";
+import PostsFilter from "../../components/posts/posts-filter";
+import Header from "../../components/layout/header";
 import { useEffect, useState } from "react";
 import { getAllPosts } from "../../store/actions/posts";
-import PostPagination from "../../components/posts/PostsPagination";
+import PostPagination from "../../components/posts/posts-pagination";
 
 function HomePage() {
     const dispatch = useDispatch();
@@ -32,7 +32,7 @@ function HomePage() {
     return (
         <>
             <Header/>
-            <div className="p-5">
+            <div className="p-4 p-md-5">
                 <PostsFilter
                     loading={ commentsLoading || postsLoading }
                     fetchFunc={ (query) => dispatch(getAllPosts(query)) }

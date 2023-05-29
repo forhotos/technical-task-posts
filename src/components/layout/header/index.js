@@ -31,9 +31,10 @@ function Header() {
                 onHide={ handleClose }
                 placement={ "start" }
             >
+                <Offcanvas.Header closeButton style={{justifyContent: 'flex-end'}}/>
                 <Offcanvas.Body>
                     <div className='header-inner'>
-                        <div className='header-links'>
+                        <div className='header-links p-2'>
                             <Link to='/' onClick={ handleLinkClick }>
                                 <span>Список постов</span>
                             </Link>

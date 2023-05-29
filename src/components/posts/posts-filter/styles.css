@@ -1,0 +1,30 @@
+.filter{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.filter-item-search{
+    width: 40%;
+}
+
+.filter-item-sort{
+    width: fit-content;
+}
+
+
+.filter-item-label{
+    color: #fff
+}
+
+@media(max-width: 767px){
+    .filter{
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-end;
+    }
+
+    .filter-item-search{
+        width: 100%;
+    }
+}

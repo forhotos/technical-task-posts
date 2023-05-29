@@ -1,6 +1,7 @@
 import { Toast, ToastContainer } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { hideToast } from "../../store/actions/toast";
+import './styles.css';
 
 function ToastHelper() {
     const dispatch = useDispatch();
@@ -12,13 +13,14 @@ function ToastHelper() {
 
     return (
         <ToastContainer
-            position={ "bottom-end" }
+            id='toast-container'
         >
             <Toast
                 onClose={ () => dispatch(hideToast()) }
                 show={ isShown }
                 bg={ 'danger' }
                 autohide
+
             >
                 <Toast.Header>
                     <strong className="me-auto">Ошибка!</strong>
